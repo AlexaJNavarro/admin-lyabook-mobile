@@ -30,8 +30,8 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="46dp"
-        android:layout_height="34dp"
+        android:layout_width="42dp"
+        android:layout_height="36dp"
 
         android:layout_marginTop="20dp"
         android:layout_marginEnd="19dp"
@@ -43,5 +43,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listDirections"
+        android:layout_width="370dp"
+        android:layout_height="230dp"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="66dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
