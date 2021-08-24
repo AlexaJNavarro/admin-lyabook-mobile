@@ -39,6 +39,17 @@
                 android:layout_marginRight="20dp"
                 android:text="Buscar" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listDirections"
+                android:layout_width="370dp"
+                android:layout_height="230dp"
+                tools:layout_editor_absoluteX="22dp"
+                tools:layout_editor_absoluteY="66dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                tools:ignore="MissingConstraints" />
+
             <fragment
                 android:id="@+id/map"
                 android:name="com.google.android.gms.maps.SupportMapFragment"

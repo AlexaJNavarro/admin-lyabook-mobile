@@ -1,9 +1,14 @@
 package com.example.adminlyabook;
 
 import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.adminlyabook.adapter.ListDirectionsAdapter;
+import com.example.adminlyabook.controller.DirectionController;
+import com.example.adminlyabook.entity.DirectionEntity;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -14,17 +19,28 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.adminlyabook.databinding.ActivityMapsBinding;
 
+import java.util.ArrayList;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
-
+    RecyclerView listDirection;
+    ArrayList<DirectionEntity> listArrayDirection;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+        listDirection = findViewById(R.id.listDirections);
+        listDirection.setLayoutManager(new LinearLayoutManager(this));
+        listArrayDirection = new ArrayList<>();
+
+        ListDirectionsAdapter adapter = new ListDirectionsAdapter(DirectionController.GetAllDirection());
+        listDirection.setAdapter(adapter);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
