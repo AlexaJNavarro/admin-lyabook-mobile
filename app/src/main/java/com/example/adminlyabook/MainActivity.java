@@ -35,8 +35,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView listDirection;
-    ArrayList<DirectionEntity> listArrayDirection;
 
     EditText txt_name, txt_author, txt_editorial, txt_price, txt_image, txt_description, txt_details, txt_stock;
     Button btn;
@@ -45,12 +43,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listDirection = findViewById(R.id.listDirections);
-        listDirection.setLayoutManager(new LinearLayoutManager(this));
-        listArrayDirection = new ArrayList<>();
-
-        ListDirectionsAdapter adapter = new ListDirectionsAdapter(DirectionController.GetAllDirection());
-        listDirection.setAdapter(adapter);
         btn = findViewById(R.id.btn_location);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
