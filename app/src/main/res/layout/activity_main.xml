@@ -8,48 +8,132 @@
 
     >
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="322dp"
-        android:layout_height="36dp"
-
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:background="@drawable/input_search"
-        android:ems="10"
-        android:hint="Ingrese la direccion o lugar"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        android:textColor="@color/second"
-        android:textSize="15dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="42dp"
-        android:layout_height="36dp"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        android:text=""
-        app:backgroundTint="@color/white"
-        app:icon="@android:drawable/ic_menu_search"
-        app:iconTint="@color/second"
+    <ScrollView
+        android:layout_margin="40dp"
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listDirections"
-        android:layout_width="370dp"
-        android:layout_height="230dp"
-        tools:layout_editor_absoluteX="22dp"
-        tools:layout_editor_absoluteY="66dp"
-        tools:ignore="MissingConstraints" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Nuevo Libro" />
+
+            <EditText
+                android:id="@+id/txt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Nombre"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txt_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Autor"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txt_editorial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Editorial"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txt_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Precio"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/txt_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Imagen"
+                android:inputType="textPersonName" />
+
+
+            <EditText
+                android:id="@+id/txt_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Descripción"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/txt_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Detalle"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txt_stock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Stock"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/btn_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Establecer ubicación" />
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="BtnSave"
+                android:text="Guardar" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
