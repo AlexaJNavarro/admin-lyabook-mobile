@@ -42,11 +42,12 @@
                     android:textColorLink="@color/primary" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floatingActionButton2"
+                    android:id="@+id/search_button"
                     android:layout_width="67dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
+                    android:onClick="ButtonSearch"
                     android:src="?android:attr/actionModeWebSearchDrawable"
                     app:backgroundTint="@color/second"
                     app:rippleColor="@color/resaltado"
