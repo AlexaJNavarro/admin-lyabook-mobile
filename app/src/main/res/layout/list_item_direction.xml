@@ -36,6 +36,19 @@
                 android:text="TextView"
                 android:textSize="12dp" />
 
+            <TextView
+                android:id="@+id/lbl_log"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/lbl_lat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:visibility="invisible" />
 
 
         </LinearLayout>
@@ -49,9 +62,11 @@
                 android:layout_height="20dp" />
 
             <Button
+                android:id="@+id/btn_cor"
                 android:layout_width="75dp"
                 android:layout_height="31dp"
                 android:background="@drawable/botton_search"
+                android:onClick="Test"
                 android:text="Ver"
                 android:textColor="@color/details"
                 android:textSize="10sp" />

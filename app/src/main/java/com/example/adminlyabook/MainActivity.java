@@ -36,12 +36,13 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, MapsActivity.class);
+                Intent i = new Intent(MainActivity.this, map.class);
                 startActivity(i);
             }
         });
 
     }
+
 
     public void BtnSave(View view) {
         txt_name = findViewById(R.id.txt_name);

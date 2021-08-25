@@ -1,10 +1,7 @@
-package com.example.adminlyabook.entity;
+package com.example.adminlyabook.models;
 
-public class MapsDirectionModels {
+public class Data {
     private String display_address;
-    private String display_region;
-    private Float lat;
-    private Float lon;
 
     public String getDisplay_address() {
         return display_address;
@@ -22,19 +19,23 @@ public class MapsDirectionModels {
         this.display_region = display_region;
     }
 
-    public Float getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(Float lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 
-    public Float getLon() {
+    public Double getLon() {
         return lon;
     }
 
-    public void setLon(Float lon) {
+    public void setLon(Double lon) {
         this.lon = lon;
     }
+
+    private String display_region;
+    private Double lat;
+    private Double lon;
 }
