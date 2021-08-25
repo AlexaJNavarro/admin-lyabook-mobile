@@ -62,7 +62,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void apiPlaces() {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.8:8081/")
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.7:8081/")
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         LocationNameApi locationNameApi = retrofit.create(LocationNameApi.class);

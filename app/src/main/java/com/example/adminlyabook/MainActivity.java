@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.adminlyabook.helper.Ubication;
 import com.example.adminlyabook.interfaces.IBook;
 import com.example.adminlyabook.models.Book;
 import com.example.adminlyabook.models.Fisico;
@@ -64,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
         Fisico fisico = new Fisico();
         fisico.setDetails(details);
-        fisico.setLat("-1111111111");
-        fisico.setLog("-2222222222");
+        fisico.setLat(Ubication.getLat().toString());
+        fisico.setLog(Ubication.getLon().toString());
         fisico.setStock(Integer.parseInt(txt_price.getText().toString()));
 
         Type type = new Type();
@@ -97,8 +98,6 @@ public class MainActivity extends AppCompatActivity {
                     Book res = response.body();
                     Toast.makeText(MainActivity.this, "creado", Toast.LENGTH_SHORT).show();
                 }
-                System.out.println("###############################################################333");
-                System.out.println(response.toString());
             }
 
             @Override
