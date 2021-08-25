@@ -4,6 +4,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ import com.example.adminlyabook.adapter.ListDirectionsAdapter;
 import com.example.adminlyabook.controller.DirectionController;
 import com.example.adminlyabook.entity.DirectionEntity;
 import com.example.adminlyabook.helper.Store;
+import com.example.adminlyabook.helper.Ubication;
 import com.example.adminlyabook.interfaces.LocationNameApi;
 import com.example.adminlyabook.models.Data;
 import com.example.adminlyabook.models.Location;
@@ -60,7 +62,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void apiPlaces() {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.7:8081/")
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.8:8081/")
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         LocationNameApi locationNameApi = retrofit.create(LocationNameApi.class);
@@ -94,10 +96,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        Ubication.setLat(-12.078213f);
+        Ubication.setLon(-77.074434f);
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-12.078213, -77.074434);
+        LatLng sydney = new LatLng(Ubication.getLat(), Ubication.getLon());
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
+
 }

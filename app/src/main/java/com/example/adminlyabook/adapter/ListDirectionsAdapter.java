@@ -1,5 +1,6 @@
 package com.example.adminlyabook.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.adminlyabook.MapsActivity;
+import com.example.adminlyabook.MapsFragment;
 import com.example.adminlyabook.R;
+import com.example.adminlyabook.ViewStore;
+import com.example.adminlyabook.databinding.ActivityMapsBinding;
 import com.example.adminlyabook.entity.DirectionEntity;
+import com.example.adminlyabook.helper.Ubication;
 import com.example.adminlyabook.models.Data;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +51,13 @@ public class ListDirectionsAdapter extends RecyclerView.Adapter<ListDirectionsAd
         holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(holder.lblLat.getText());
+                Ubication.setLat(Float.parseFloat(holder.lblLat.getText().toString()));
+                Ubication.setLon(Float.parseFloat(holder.lblLog.getText().toString()));
+                Ubication.setAdreess(holder.lblDirection.getText().toString());
+
+                Intent i = new Intent(view.getContext(), ViewStore.class);
+                view.getContext().startActivity(i);
+
             }
         });
     }

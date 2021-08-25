@@ -32,8 +32,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".ViewStore"
+            android:label="@string/title_activity_view_store"></activity>
+        <activity
             android:name=".map"
-            android:label="@string/title_activity_map"></activity>
+            android:label="@string/title_activity_map" />
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
