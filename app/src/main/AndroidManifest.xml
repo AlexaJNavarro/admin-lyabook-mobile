@@ -28,6 +28,10 @@
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
+            android:name="com.parkifast.mymappi.myapisdk.API_KEY"
+            android:value="5a6f0cf3-af52-4aaf-bb06-2c5ed3dd0da7" />
+
+        <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
