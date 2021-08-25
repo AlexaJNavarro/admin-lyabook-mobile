@@ -7,20 +7,56 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-
+        android:orientation="horizontal"
+        android:background="@drawable/item_result_direction"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         >
 
-        <TextView
-            android:id="@+id/lbl_direction"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/lbl_region"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            <TextView
+                android:id="@+id/lbl_direction"
+                android:layout_width="263dp"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="@color/second" />
+
+            <TextView
+                android:id="@+id/lbl_region"
+                android:layout_width="264dp"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="12dp" />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp" />
+
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="31dp"
+                android:background="@drawable/botton_search"
+                android:text="Ver"
+                android:textColor="@color/details"
+                android:textSize="10sp" />
+        </LinearLayout>
+
     </LinearLayout>
+
 </LinearLayout>

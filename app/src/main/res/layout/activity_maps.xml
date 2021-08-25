@@ -19,25 +19,40 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editTextTextPersonName"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:ems="10"
-                android:hint="Ingrese el lugar"
-                android:inputType="textPersonName" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                >
 
-            <Button
-                android:id="@+id/btn_search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Buscar" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName"
+                    android:layout_width="273dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:ems="10"
+                    android:hint="Ingrese el lugar"
+                    android:inputType="textPersonName"
+                    android:textColorHighlight="@color/details"
+                    android:textColorLink="@color/primary" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floatingActionButton2"
+                    android:layout_width="67dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:src="?android:attr/actionModeWebSearchDrawable"
+                    app:backgroundTint="@color/second"
+                    app:rippleColor="@color/resaltado"
+                    app:tint="@android:color/white" />
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listDirections"
@@ -57,6 +72,7 @@
                 android:layout_height="300dp"
                 android:layout_margin="20dp"
                 tools:context=".MapsActivity" />
+
         </LinearLayout>
     </ScrollView>
 
