@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.adminlyabook.Helper.Store;
+import com.example.adminlyabook.adapter.ListAdapter;
 import com.example.adminlyabook.adapter.ListDirectionsAdapter;
 import com.example.adminlyabook.controller.DirectionController;
+import com.example.adminlyabook.controller.MapsDirectionController;
 import com.example.adminlyabook.entity.DirectionEntity;
 import com.example.adminlyabook.entity.MapsDirectionModels;
 import com.example.adminlyabook.interfaces.MapsDIrectionInterface;
@@ -25,6 +28,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.adminlyabook.databinding.ActivityMapsBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,6 +57,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ListDirectionsAdapter adapter = new ListDirectionsAdapter(DirectionController.GetAllDirection());
         listDirection.setAdapter(adapter);
 
+
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -74,20 +80,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         MapsDIrectionInterface mapsDirecInter = retrofit.create(MapsDIrectionInterface.class);
-        Call<MapsDirectionModels> call = mapsDirecInter.getAllDirection("5a6f0cf3-af52-4aaf-bb06-2c5ed3dd0da7", "Scotiabank San Juan de Miraflores Avenida San Juan 1186, Lima, Lima, Peru");
-        call.enqueue(new Callback<MapsDirectionModels>() {
+        Call<List<MapsDirectionModels>> call = mapsDirecInter.getAllDirection("5a6f0cf3-af52-4aaf-bb06-2c5ed3dd0da7", "san juan");
+        call.enqueue(new Callback<List<MapsDirectionModels>>() {
             @Override
-            public void onResponse(Call<MapsDirectionModels> call, Response<MapsDirectionModels> response) {
+            public void onResponse(Call<List<MapsDirectionModels>> call, Response<List<MapsDirectionModels>> response) {
 
                 if (response.code() == 200) {
-                    MapsDirectionModels model = response.body();
-                    Toast.makeText(MapsActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
+                    Store.listDirection = response.body();
+                    Toast.makeText(MapsActivity.this, response.body().toString(), Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @Override
-            public void onFailure(Call<MapsDirectionModels> call, Throwable t) {
+            public void onFailure(Call<List<MapsDirectionModels>> call, Throwable t) {
                 Toast.makeText(MapsActivity.this, "Error en el servidor", Toast.LENGTH_SHORT).show();
             }
         });

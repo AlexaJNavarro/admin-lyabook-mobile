@@ -19,33 +19,6 @@ public class DirectionController {
         listDirection.add(d_e);
         listDirection.add(d_e);
         listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-        listDirection.add(d_e);
-
-
-
-
 
 
 
