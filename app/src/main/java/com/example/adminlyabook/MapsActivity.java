@@ -1,27 +1,21 @@
 package com.example.adminlyabook;
 
 import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.adminlyabook.Helper.Store;
-import com.example.adminlyabook.adapter.ListAdapter;
-import com.example.adminlyabook.adapter.ListDirectionsAdapter;
-import com.example.adminlyabook.controller.DirectionController;
-import com.example.adminlyabook.controller.MapsDirectionController;
+import com.example.adminlyabook.controller.AdreesController;
+import com.example.adminlyabook.entity.AdreessEntity;
 import com.example.adminlyabook.entity.DirectionEntity;
-import com.example.adminlyabook.entity.MapsDirectionModels;
-import com.example.adminlyabook.interfaces.MapsDIrectionInterface;
-import com.example.adminlyabook.models.Book;
+import com.example.adminlyabook.interfaces.IAdrees;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -33,36 +27,44 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private ActivityMapsBinding binding;
-    RecyclerView listDirection;
-    ArrayList<DirectionEntity> listArrayDirection;
+
+    List<AdreessEntity> adreessList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        binding = ActivityMapsBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-
-        listDirection = findViewById(R.id.listDirections);
-        listDirection.setLayoutManager(new LinearLayoutManager(this));
-        listArrayDirection = new ArrayList<>();
-
-        ListDirectionsAdapter adapter = new ListDirectionsAdapter(DirectionController.GetAllDirection());
-        listDirection.setAdapter(adapter);
+        setContentView(R.layout.activity_main);
 
 
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+    }
+
+    public void Example(){
+        adreessList = new ArrayList<>();
+        IAdrees adrees_i = AdreesController.getAdreess().create(IAdrees.class);
+        Call<List<AdreessEntity>> call = adrees_i.getAllDirection("5a6f0cf3-af52-4aaf-bb06-2c5ed3dd0da7", "san juan ");
+        call.enqueue(new Callback<List<AdreessEntity>>() {
+            @Override
+            public void onResponse(Call<List<AdreessEntity>> call, Response<List<AdreessEntity>> response) {
+                adreessList = response.body();
+
+                Toast.makeText(MapsActivity.this, response.body().toString() , Toast.LENGTH_SHORT).show();
+                Log.d("MapsActivity", adreessList.toString());
+            }
+
+            @Override
+            public void onFailure(Call<List<AdreessEntity>> call, Throwable t) {
+                Toast.makeText(MapsActivity.this, "error" , Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void ButtonSearch(View view){
+        Example();
     }
 
     /**
@@ -74,36 +76,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-
-    public void GetAllDirection(){
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api.mymappi.com/")
-                .addConverterFactory(GsonConverterFactory.create()).build();
-
-        MapsDIrectionInterface mapsDirecInter = retrofit.create(MapsDIrectionInterface.class);
-        Call<List<MapsDirectionModels>> call = mapsDirecInter.getAllDirection("5a6f0cf3-af52-4aaf-bb06-2c5ed3dd0da7", "san juan");
-        call.enqueue(new Callback<List<MapsDirectionModels>>() {
-            @Override
-            public void onResponse(Call<List<MapsDirectionModels>> call, Response<List<MapsDirectionModels>> response) {
-
-                if (response.code() == 200) {
-                    Store.listDirection = response.body();
-                    Toast.makeText(MapsActivity.this, response.body().toString(), Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<List<MapsDirectionModels>> call, Throwable t) {
-                Toast.makeText(MapsActivity.this, "Error en el servidor", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-    public void ButtonSearch(View view){
-        GetAllDirection();
-    }
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

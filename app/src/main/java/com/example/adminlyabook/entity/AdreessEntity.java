@@ -1,10 +1,27 @@
 package com.example.adminlyabook.entity;
 
-public class MapsDirectionModels {
+import com.google.gson.annotations.SerializedName;
+
+public class AdreessEntity {
+    @SerializedName("display_address")
     private String display_address;
+
+    @SerializedName("display_region")
     private String display_region;
+
+    @SerializedName("lat")
     private Float lat;
+
+    @SerializedName("lon")
     private Float lon;
+
+    public AdreessEntity(String display_address, String display_region, Float lat, Float lon){
+        this.display_address = display_address;
+        this.display_region = display_region;
+        this.lat = lat;
+        this.lon = lon;
+    }
+
 
     public String getDisplay_address() {
         return display_address;
@@ -36,5 +53,15 @@ public class MapsDirectionModels {
 
     public void setLon(Float lon) {
         this.lon = lon;
+    }
+
+    @Override
+    public String toString(){
+        return "Datos(" +
+                "name: " + display_address + "/"+
+                ", region: " + display_region + "/" +
+                ", lon: " + lon + "/" +
+                ", lat: " + lat + "/"  +
+                ")";
     }
 }
