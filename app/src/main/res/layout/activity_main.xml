@@ -35,7 +35,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Nuevo Libro" />
+                android:text="Nuevo Libro"
+                android:textColor="@color/second"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/txt_name"
@@ -124,6 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:background="@drawable/button_location"
                 android:text="Establecer ubicación" />
 
             <Button
@@ -133,7 +136,9 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:onClick="BtnSave"
-                android:text="Guardar" />
+                android:text="Guardar"
+                android:background="@drawable/botton_search"
+                />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
