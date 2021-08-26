@@ -97,6 +97,10 @@ public class MainActivity extends AppCompatActivity {
                 if (response.code() == 201) {
                     Book res = response.body();
                     Toast.makeText(MainActivity.this, "creado", Toast.LENGTH_SHORT).show();
+                }else if(response.code() == 403){
+                    Toast.makeText(MainActivity.this, "Usted no tiene acceso", Toast.LENGTH_SHORT).show();
+                }else if(response.code() == 400){
+                    Toast.makeText(MainActivity.this, "Los datos ingresados no son correctos", Toast.LENGTH_SHORT).show();
                 }
             }
 

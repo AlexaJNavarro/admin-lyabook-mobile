@@ -37,7 +37,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity{
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
@@ -52,9 +52,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        //SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        //    .findFragmentById(R.id.map);
+        //mapFragment.getMapAsync(this);
     }
 
     public void ButtonSearch(View view){
@@ -76,7 +76,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (response.code() == 200) {
                     Location location = response.body();
                     ArrayList<Data> res = location.getData();
-                    Toast.makeText(MapsActivity.this, response.toString() , Toast.LENGTH_SHORT).show();
+
 
                     listDirection = findViewById(R.id.listDirections);
                     listDirection.setLayoutManager(new LinearLayoutManager(MapsActivity.this));
@@ -93,15 +93,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        Ubication.setLat(-12.078213f);
-        Ubication.setLon(-77.074434f);
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(Ubication.getLat(), Ubication.getLon());
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }
+    //@Override
+    //public void onMapReady(GoogleMap googleMap) {
+    //    mMap = googleMap;
+    //    Ubication.setLat(-12.078213f);
+    //    Ubication.setLon(-77.074434f);
+    //    // Add a marker in Sydney and move the camera
+    //    LatLng sydney = new LatLng(Ubication.getLat(), Ubication.getLon());
+    //    mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+    //    mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    //}
 
 }
